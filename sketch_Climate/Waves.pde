@@ -16,7 +16,7 @@ class Wave {
   }
 
   void act() {
-    y = y - (y - 300)/100;
+    y = y - (y - 300)/120;
     w = w + 1;
     f = f + 3;
     stroke(#9FE0EA, f);

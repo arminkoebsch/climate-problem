@@ -1,10 +1,14 @@
 
 Tree[] trees;
 Wave[] waves;
+Fire[] flames;
+Smoke[] smokes;
 int w = 50;
 int wn = 10;
-int tn = 10;
-int treeline = 300;
+int tn = 60;
+int fn = 30;
+float treeline = 300;
+float fireline = 300;
 
 void setup() {
 
@@ -19,6 +23,12 @@ void setup() {
   i = 0;
   while (i < tn) {
     trees[i] = new Tree();
+    i++;
+  }
+  flames = new Fire[fn];
+  i = 0;
+  while (i < fn) {
+    flames[i] = new Fire();
     i++;
   }
 }
@@ -41,10 +51,55 @@ void draw() {
     waves[i].respawn();
     i++;
   }
-  
+
   i = 0;
-  while (i < wn) {
-    
+  treeline = 25;
+  while (i < tn-40) {
+  trees[i].show();//top treeline
+  i++;
+  treeline = treeline + 4;
+  }
+
+  i = 0;
+  fireline = 25;
+  while (i < fn-20) {
+    flames[i].show();//top fireline
+    flames[i].act();
     i++;
+    fireline = fireline + 8;
+  }
+
+  i = 20;
+  treeline = 100;
+  while (i < tn-20) {
+  trees[i].show();//middle treeline
+  i++;
+  treeline = treeline + 4;
+  }
+
+  i = 10;
+  fireline = 100;
+  while (i < fn-10) {
+    flames[i].show();//middle fireline
+    flames[i].act();
+    i++;
+    fireline = fireline + 8;
+  }
+
+  i = 40;
+  treeline = 200;
+  while (i < tn) {
+  trees[i].show();//bottom treeline
+  i++;
+  treeline = treeline + 4;
+  }
+  
+  i = 20;
+  fireline = 200;
+  while (i < fn) {
+  flames[i].show();//bottom fireline
+  flames[i].act();
+  i++;
+  fireline = fireline + 8;
   }
 }
