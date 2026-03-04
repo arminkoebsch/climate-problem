@@ -7,6 +7,7 @@ int w = 50;
 int wn = 10;
 int tn = 60;
 int fn = 30;
+int sn = 60;
 float treeline = 300;
 float fireline = 300;
 
@@ -31,6 +32,12 @@ void setup() {
     flames[i] = new Fire();
     i++;
   }
+  smokes = new Smoke[sn];
+  i = 0;
+  while (i < sn) {
+    smokes[i] = new Smoke();
+    i++;
+  }
 }
 
 
@@ -52,12 +59,14 @@ void draw() {
     i++;
   }
 
+
+
   i = 0;
   treeline = 25;
   while (i < tn-40) {
-  trees[i].show();//top treeline
-  i++;
-  treeline = treeline + 4;
+    trees[i].show();//top treeline
+    i++;
+    treeline = treeline + 4;
   }
 
   i = 0;
@@ -72,9 +81,9 @@ void draw() {
   i = 20;
   treeline = 100;
   while (i < tn-20) {
-  trees[i].show();//middle treeline
-  i++;
-  treeline = treeline + 4;
+    trees[i].show();//middle treeline
+    i++;
+    treeline = treeline + 4;
   }
 
   i = 10;
@@ -89,17 +98,25 @@ void draw() {
   i = 40;
   treeline = 200;
   while (i < tn) {
-  trees[i].show();//bottom treeline
-  i++;
-  treeline = treeline + 4;
+    trees[i].show();//bottom treeline
+    i++;
+    treeline = treeline + 4;
   }
-  
+
   i = 20;
   fireline = 200;
   while (i < fn) {
-  flames[i].show();//bottom fireline
-  flames[i].act();
-  i++;
-  fireline = fireline + 8;
+    flames[i].show();//bottom fireline
+    flames[i].act();
+    i++;
+    fireline = fireline + 8;
+  }
+  
+    i = 0;
+  while (i < sn) {
+    smokes[i].act();
+    smokes[i].show();//smoke
+    smokes[i].respawn();
+    i++;
   }
 }
